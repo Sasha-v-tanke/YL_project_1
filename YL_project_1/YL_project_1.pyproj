@@ -23,6 +23,14 @@
   <ItemGroup>
     <Compile Include="YL_project_1.py" />
   </ItemGroup>
+  <ItemGroup>
+    <Content Include="AdminWelcome.ui" />
+    <Content Include="Basket.ui" />
+    <Content Include="Creator.ui" />
+    <Content Include="Orders.ui" />
+    <Content Include="Shop.ui" />
+    <Content Include="WelcomeWindow.ui" />
+  </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\Python Tools\Microsoft.PythonTools.targets" />
   <!-- Uncomment the CoreCompile target to enable the Build command in
        Visual Studio and specify your pre- and post-build commands in
