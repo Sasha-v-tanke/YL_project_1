@@ -1,10 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ui version="4.0">
- <class>MainWindow</class>
- <widget class="QMainWindow" name="MainWindow">
-  <property name="enabled">
-   <bool>false</bool>
-  </property>
+ <class>WelcomeWindow</class>
+ <widget class="QMainWindow" name="WelcomeWindow">
   <property name="geometry">
    <rect>
     <x>0</x>
@@ -17,19 +14,13 @@
    <string>MainWindow</string>
   </property>
   <widget class="QWidget" name="centralwidget">
-   <property name="enabled">
-    <bool>false</bool>
-   </property>
-   <widget class="QFrame" name="AdminMenu">
-    <property name="enabled">
-     <bool>false</bool>
-    </property>
+   <widget class="QPushButton" name="NewOrder">
     <property name="geometry">
      <rect>
-      <x>0</x>
-      <y>0</y>
-      <width>0</width>
-      <height>0</height>
+      <x>340</x>
+      <y>250</y>
+      <width>120</width>
+      <height>100</height>
      </rect>
     </property>
     <property name="sizePolicy">
@@ -80,10 +71,10 @@
       </item>
       <item>
        <widget class="QPushButton" name="CheckAccount">
-        <property name="text">
-         <string>PushButton</string>
-        </property>
-       </widget>
+    <property name="text">
+     <string>НОВЫЙ ЗАКАЗ</string>
+    </property>
+   </widget>
       </item>
      </layout>
     </widget>
@@ -103,21 +94,21 @@
     <property name="frameShadow">
      <enum>QFrame::Raised</enum>
     </property>
-    <widget class="QPushButton" name="AdminAccount">
+   <widget class="QPushButton" name="AdminAccount">
      <property name="enabled">
       <bool>false</bool>
      </property>
-     <property name="geometry">
-      <rect>
-       <x>640</x>
-       <y>570</y>
-       <width>160</width>
-       <height>25</height>
-      </rect>
-     </property>
-     <property name="text">
-      <string>ВОЙТИ КАК АДМИНИСТРАТОР</string>
-     </property>
+    <property name="geometry">
+     <rect>
+      <x>630</x>
+      <y>560</y>
+      <width>160</width>
+      <height>30</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>ВОЙТИ КАК АДМИНИСТРАТОР</string>
+    </property>
      <property name="checkable">
       <bool>true</bool>
      </property>
@@ -161,9 +152,9 @@
      <property name="autoRepeat">
       <bool>false</bool>
      </property>
-    </widget>
    </widget>
   </widget>
+ </widget>
  </widget>
  <resources/>
  <connections/>
