@@ -8,7 +8,7 @@ from PyQt5 import QtCore, QtGui
 class MyWidget(QMainWindow):
     def __init__(self):
         super().__init__()
-        uic.loadUi('WelcomeWindow.ui', self)
+        uic.loadUi('YL_project_1/WelcomeWindow.ui', self)
         self.AdminAccount.clicked.connect(self.showAdminMenu)
         self.NewOrder.clicked.connect(self.openUserWindow)
 
