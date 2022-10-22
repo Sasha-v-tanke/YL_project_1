@@ -28,8 +28,7 @@ class MyWidget(QMainWindow):
     def openUserWindow(self):
         self.NewOrder.setText("ok")
 
-
-if __name__ == '__main__':
+def start():
     app = QApplication(sys.argv)
     ex = MyWidget()
     ex.show()
