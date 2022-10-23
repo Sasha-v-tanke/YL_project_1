@@ -78,7 +78,7 @@ class UserWindow(Window):
         super().__init__(manager)
         if self.changeMaket(PATH_UI_SHOP_WINDOW):
             self.BackToWelcome.clicked.connect(self.back)
-            self.load()
+            #self.load()
 
     def back(self):
         self.manager.changeMaket(WindowName.WELCOME_WINDOW)
@@ -99,6 +99,7 @@ class CreatorWindow(Window):
             if not os.path.exists(MENU_DB):
                 raise DirectoryFileException
             else:
+                self.NewTab.clicked.connect(self.newTab)
                 con = sqlite3.connect(MENU_DB)
                 cur = con.cursor()
                 res = cur.execute("""SELECT title FROM categories""").fetchall()
@@ -107,17 +108,31 @@ class CreatorWindow(Window):
                 for title in res:
                     NewCategory = QWidget()
                     NewCategory.setObjectName(title[0][0])
-                    self.pushButton = QPushButton(self.Category1)
-                    self.pushButton.setObjectName(u"pushButton")
-                    self.pushButton.resize(100, 100)
-                    self.pushButton.move(10, 20)
                     self.Categories_.append(NewCategory)
                     self.Categories.addTab(NewCategory, "")
-                    self.Categories.setTabText(self.Categories.indexOf(NewCategory), QCoreApplication.translate("MainWindow", u"" + format(title[0][0]) + u"", None))
-                    print(u"" + title[0][0] + u"")
+                    self.Categories.setTabText(self.Categories.indexOf(NewCategory), QCoreApplication.translate("MainWindow", title[0], None))
+                    dishes = cur.execute("""SELECT 
+                                                dishes.title, 
+                                                dishes.price
+                                            FROM Dishes
+                                            INNER JOIN Categories
+                                            ON Categories.CategoryId = dishes.CategoryId
+                                            WHERE Categories.title = ?""", (title[0],)).fetchall()
+                    for i in range(len(dishes)):
+                        pushButton = QPushButton(NewCategory)
+                        pushButton.setObjectName("Btn" + str(i))
+                        pushButton.move(20, 40 + 70 * i)
+                        pushButton.resize(150, 50)
+                        pushButton.setText(QCoreApplication.translate("MainWindow", dishes[i][0] + "\t\t" + str(dishes[i][1]), None))
                 con.close()
         except Exception as exc:
             print(exc)
+
+    def newTab(self):
+        pass
+
+    def newDish(self):
+        pass
 
 
 

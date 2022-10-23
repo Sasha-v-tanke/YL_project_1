@@ -23,6 +23,9 @@
       <height>40</height>
      </rect>
     </property>
+    <property name="text">
+     <string>password</string>
+    </property>
     <property name="maxLength">
      <number>20</number>
     </property>
@@ -41,6 +44,9 @@
       <width>150</width>
       <height>40</height>
      </rect>
+    </property>
+    <property name="text">
+     <string>login</string>
     </property>
     <property name="maxLength">
      <number>20</number>

@@ -15,6 +15,7 @@ class Manager:
 
     def changeMaket(self, name: WindowName):
         self.coor = (self.window.x() + 1, self.window.y() + 31)  # без понятия почему окно смещается при открытии
+        self.window.close()
         if name == WindowName.WELCOME_WINDOW:
             self.window = WelcomeWindow(self)
         elif name == WindowName.SHOP_WINDOW:
