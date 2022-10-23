@@ -27,7 +27,7 @@
      <string>НОВЫЙ ЗАКАЗ</string>
     </property>
    </widget>
-   <widget class="QPushButton" name="AdminAccount">
+   <widget class="QPushButton" name="GoToAdminAccount">
     <property name="geometry">
      <rect>
       <x>630</x>

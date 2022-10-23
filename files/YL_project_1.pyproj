@@ -22,6 +22,12 @@
     <EnableUnmanagedDebugging>false</EnableUnmanagedDebugging>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="Constants.py">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Enums.py">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="Exceptions.py">
       <SubType>Code</SubType>
     </Compile>
@@ -29,6 +35,9 @@
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="Welcome.py" />
+    <Compile Include="Windows.py">
+      <SubType>Code</SubType>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <Folder Include="DataBases\" />
@@ -37,12 +46,12 @@
   <ItemGroup>
     <Content Include="DataBases\Accounts.db" />
     <Content Include="DataBases\Menu.db" />
-    <Content Include="UI\AdminWelcome.ui" />
+    <Content Include="UI\Admin.ui" />
     <Content Include="UI\Basket.ui" />
     <Content Include="UI\Creator.ui" />
     <Content Include="UI\Orders.ui" />
     <Content Include="UI\Shop.ui" />
-    <Content Include="UI\WelcomeWindow.ui" />
+    <Content Include="UI\Main.ui" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\Python Tools\Microsoft.PythonTools.targets" />
   <!-- Uncomment the CoreCompile target to enable the Build command in
