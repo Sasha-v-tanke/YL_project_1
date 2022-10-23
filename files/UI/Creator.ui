@@ -14,13 +14,13 @@
    <string>MainWindow</string>
   </property>
   <widget class="QWidget" name="centralwidget">
-   <widget class="QTabWidget" name="tabWidget">
+   <widget class="QTabWidget" name="Categories">
     <property name="geometry">
      <rect>
       <x>20</x>
-      <y>20</y>
-      <width>761</width>
-      <height>561</height>
+      <y>30</y>
+      <width>760</width>
+      <height>560</height>
      </rect>
     </property>
     <property name="tabPosition">
@@ -41,87 +41,61 @@
     <property name="tabBarAutoHide">
      <bool>true</bool>
     </property>
-    <widget class="QWidget" name="tab">
+    <widget class="QWidget" name="Category1">
      <attribute name="title">
       <string>Tab 1</string>
      </attribute>
-     <widget class="QTabWidget" name="tabWidget_2">
+     <widget class="QPushButton" name="pushButton">
       <property name="geometry">
        <rect>
-        <x>0</x>
-        <y>0</y>
-        <width>761</width>
-        <height>541</height>
+        <x>10</x>
+        <y>20</y>
+        <width>101</width>
+        <height>101</height>
        </rect>
       </property>
-      <property name="tabPosition">
-       <enum>QTabWidget::North</enum>
+      <property name="text">
+       <string>БЛЮДО 1</string>
       </property>
-      <property name="currentIndex">
-       <number>0</number>
+     </widget>
+     <widget class="QPushButton" name="pushButton_2">
+      <property name="geometry">
+       <rect>
+        <x>470</x>
+        <y>40</y>
+        <width>101</width>
+        <height>101</height>
+       </rect>
       </property>
-      <widget class="QWidget" name="tab_3">
-       <attribute name="title">
-        <string>Tab 1</string>
-       </attribute>
-       <widget class="QPushButton" name="pushButton">
-        <property name="geometry">
-         <rect>
-          <x>20</x>
-          <y>30</y>
-          <width>101</width>
-          <height>101</height>
-         </rect>
-        </property>
-        <property name="text">
-         <string>БЛЮДО 1</string>
-        </property>
-       </widget>
-       <widget class="QPushButton" name="pushButton_2">
-        <property name="geometry">
-         <rect>
-          <x>380</x>
-          <y>40</y>
-          <width>101</width>
-          <height>101</height>
-         </rect>
-        </property>
-        <property name="text">
-         <string>БЛЮДО 3</string>
-        </property>
-       </widget>
-       <widget class="QPushButton" name="pushButton_3">
-        <property name="geometry">
-         <rect>
-          <x>30</x>
-          <y>250</y>
-          <width>101</width>
-          <height>101</height>
-         </rect>
-        </property>
-        <property name="text">
-         <string>БЛЮДО 3</string>
-        </property>
-       </widget>
-       <widget class="QPushButton" name="pushButton_4">
-        <property name="geometry">
-         <rect>
-          <x>380</x>
-          <y>260</y>
-          <width>101</width>
-          <height>101</height>
-         </rect>
-        </property>
-        <property name="text">
-         <string>ДОБАВИТЬ БЛЮДО</string>
-        </property>
-       </widget>
-      </widget>
-      <widget class="QWidget" name="tab_4">
-       <attribute name="title">
-        <string>Tab 2</string>
-       </attribute>
-      </widget>
+      <property name="text">
+       <string>БЛЮДО 3</string>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="pushButton_3">
+      <property name="geometry">
+       <rect>
+        <x>30</x>
+        <y>320</y>
+        <width>101</width>
+        <height>101</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>БЛЮДО 3</string>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="pushButton_4">
+      <property name="geometry">
+       <rect>
+        <x>470</x>
+        <y>300</y>
+        <width>101</width>
+        <height>101</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>ДОБАВИТЬ БЛЮДО</string>
+      </property>
      </widget>
     </widget>
     <widget class="QWidget" name="tab_2">
@@ -129,6 +103,19 @@
       <string>Tab 2</string>
      </attribute>
     </widget>
+   </widget>
+   <widget class="QPushButton" name="BackToWelcome">
+    <property name="geometry">
+     <rect>
+      <x>10</x>
+      <y>0</y>
+      <width>75</width>
+      <height>23</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>НАЗАД</string>
+    </property>
    </widget>
   </widget>
  </widget>

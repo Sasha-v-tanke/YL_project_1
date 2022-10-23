@@ -148,6 +148,19 @@
      <string>Заказать</string>
     </property>
    </widget>
+   <widget class="QPushButton" name="BackToWelcome">
+    <property name="geometry">
+     <rect>
+      <x>20</x>
+      <y>20</y>
+      <width>75</width>
+      <height>23</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>НАЗАД</string>
+    </property>
+   </widget>
   </widget>
  </widget>
  <resources/>
