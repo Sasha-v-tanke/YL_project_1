@@ -84,6 +84,13 @@ class UserWindow(Window):
         self.manager.changeMaket(WindowName.WELCOME_WINDOW)
 
 
+class BasketWindow(Window):
+    def __init__(self, manager):
+        super().__init__(manager)
+        if self.changeMaket(PATH_UI_BASKET_WINDOW):
+            pass
+
+
 class CreatorWindow(Window):
     def __init__(self, manager):
         super().__init__(manager)
@@ -121,9 +128,15 @@ class CreatorWindow(Window):
                     for i in range(len(dishes)):
                         pushButton = QPushButton(NewCategory)
                         pushButton.setObjectName("Btn" + str(i))
-                        pushButton.move(20, 40 + 70 * i)
+                        pushButton.move(20, 110 + 70 * i)
                         pushButton.resize(150, 50)
                         pushButton.setText(QCoreApplication.translate("MainWindow", dishes[i][0] + "\t\t" + str(dishes[i][1]), None))
+                
+                    pushButton = QPushButton(NewCategory)
+                    pushButton.setObjectName("NewDish")
+                    pushButton.move(20, 40)
+                    pushButton.resize(150, 50)
+                    pushButton.setText(QCoreApplication.translate("MainWindow", "Новое блюдо", None))
                 con.close()
         except Exception as exc:
             print(exc)
@@ -133,6 +146,54 @@ class CreatorWindow(Window):
 
     def newDish(self):
         pass
+
+
+class ShopWindow(Window):
+    def __init__(self, manager):
+        super().__init__(manager)
+        if self.changeMaket(PATH_UI_SHOP_WINDOW):
+            self.BackToWelcome.clicked.connect(self.back)
+            self.GoToBasket.clicked.connect(self.basket)
+            self.load()
+
+    def basket(self):
+        self.manager.changeMaket(WindowName.BASKET_WINDOW)
+
+    def back(self):
+        self.manager.changeMaket(WindowName.WELCOME_WINDOW)
+
+    def load(self):
+        try:
+            if not os.path.exists(MENU_DB):
+                raise DirectoryFileException
+            else:
+                con = sqlite3.connect(MENU_DB)
+                cur = con.cursor()
+                res = cur.execute("""SELECT title FROM categories""").fetchall()
+                self.Categories.setTabBarAutoHide(True)
+                self.Categories_ = []
+                for title in res:
+                    NewCategory = QWidget()
+                    NewCategory.setObjectName(title[0][0])
+                    self.Categories_.append(NewCategory)
+                    self.Categories.addTab(NewCategory, "")
+                    self.Categories.setTabText(self.Categories.indexOf(NewCategory), QCoreApplication.translate("MainWindow", title[0], None))
+                    dishes = cur.execute("""SELECT 
+                                                dishes.title, 
+                                                dishes.price
+                                            FROM Dishes
+                                            INNER JOIN Categories
+                                            ON Categories.CategoryId = dishes.CategoryId
+                                            WHERE Categories.title = ?""", (title[0],)).fetchall()
+                    for i in range(len(dishes)):
+                        pushButton = QPushButton(NewCategory)
+                        pushButton.setObjectName("Btn" + str(i))
+                        pushButton.move(20, 40 + 70 * i)
+                        pushButton.resize(150, 50)
+                        pushButton.setText(QCoreApplication.translate("MainWindow", dishes[i][0] + "\t\t" + str(dishes[i][1]), None))
+                con.close()
+        except Exception as exc:
+            print(exc)
 
 
 

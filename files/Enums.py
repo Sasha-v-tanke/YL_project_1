@@ -6,3 +6,4 @@ class WindowName(Enum):
     SHOP_WINDOW = "Shop"
     ORDERS_WINDOW = "Orders"
     CREATOR_WINDOW = "Creator"
+    BASKET_WINDOW = "Basket"

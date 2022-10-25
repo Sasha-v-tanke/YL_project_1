@@ -19,11 +19,13 @@ class Manager:
         if name == WindowName.WELCOME_WINDOW:
             self.window = WelcomeWindow(self)
         elif name == WindowName.SHOP_WINDOW:
-            self.window = UserWindow(self)
+            self.window = ShopWindow(self)
         elif name == WindowName.ADMIN_WINDOW:
             self.window = AdminWindow(self)
         elif name == WindowName.CREATOR_WINDOW:
             self.window = CreatorWindow(self)
+        elif name == WindowName.BASKET_WINDOW:
+            self.window = BasketWindow(self)
         self.window.setGeometry(*self.coor, self.window.width(), self.window.height())
         self.window.show()
 

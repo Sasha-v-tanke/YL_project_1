@@ -34,6 +34,12 @@
     <Compile Include="Main.py">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="UI\Admin.py" />
+    <Compile Include="UI\Basket.py" />
+    <Compile Include="UI\Creator.py" />
+    <Compile Include="UI\Main.py" />
+    <Compile Include="UI\Orders.py" />
+    <Compile Include="UI\Shop.py" />
     <Compile Include="Welcome.py" />
     <Compile Include="Windows.py">
       <SubType>Code</SubType>

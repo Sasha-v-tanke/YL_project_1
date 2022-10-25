@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="c5a07d7d-b8b5-4cc1-a5b7-3d2bda0569fd" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/files/DataBases/Accounts.db" beforeDir="false" afterPath="$PROJECT_DIR$/files/DataBases/Accounts.db" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/files/Enums.py" beforeDir="false" afterPath="$PROJECT_DIR$/files/Enums.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/files/UI/Orders.ui" beforeDir="false" afterPath="$PROJECT_DIR$/files/UI/Orders.ui" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/files/UI/Shop.ui" beforeDir="false" afterPath="$PROJECT_DIR$/files/UI/Shop.ui" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/files/Welcome.py" beforeDir="false" afterPath="$PROJECT_DIR$/files/Welcome.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/files/Windows.py" beforeDir="false" afterPath="$PROJECT_DIR$/files/Windows.py" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="ProjectId" id="2GabTHVestXH2U4uj0R5MJq68IT" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="RunOnceActivity.cidr.known.project.marker" value="true" />
+    <property name="cidr.known.project.marker" value="true" />
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="c5a07d7d-b8b5-4cc1-a5b7-3d2bda0569fd" name="Changes" comment="" />
+      <created>1666629664696</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1666629664696</updated>
+    </task>
+    <servers />
+  </component>
+</project>
