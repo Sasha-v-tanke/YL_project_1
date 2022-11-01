@@ -8,3 +8,5 @@ PATH_UI_SHOP_WINDOW = ".\\UI\\Shop.ui"
 
 ACCOUNTS_DB = ".\\DataBases\\Accounts.db"
 MENU_DB = ".\\DataBases\\Menu.db"
+
+SIZE_W = (800, 600)
