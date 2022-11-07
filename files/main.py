@@ -1,7 +1,4 @@
-try:
-    import Welcome
+import Welcome
 
-    if __name__ == "__main__":
-        Welcome.start()
-except Exception as exc:
-    print(exc)
+if __name__ == "__main__":
+    Welcome.start()
