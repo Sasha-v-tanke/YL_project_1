@@ -35,11 +35,11 @@
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="UI\AdminW.py" />
-    <Compile Include="UI\Basket.py" />
+    <Compile Include="UI\BasketW.py" />
     <Compile Include="UI\CreatorW.py" />
-    <Compile Include="UI\MainW.py" />
-    <Compile Include="UI\Orders.py" />
-    <Compile Include="UI\Shop.py" />
+    <Compile Include="UI\WelcomeW.py" />
+    <Compile Include="UI\OrdersW.py" />
+    <Compile Include="UI\ShopW.py" />
     <Compile Include="Welcome.py" />
     <Compile Include="Windows.py">
       <SubType>Code</SubType>
