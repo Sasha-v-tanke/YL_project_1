@@ -10,7 +10,7 @@ from Constants import SIZE_W, MENU_DB
 
 class ShopW(Window):
     def setupUI(self):
-        self.lst = []
+        self.lst = list()
         self.boxes = {}
         self.titles = ["Title", "Price"]
 
@@ -71,7 +71,6 @@ class ShopW(Window):
         self.con.close()
 
     def addOffer(self, lst):
-        self.lst = lst
         for elem in lst:
             ind = list(self.boxes.values()).index(elem)
             key = list(self.boxes.keys())[ind].setCheckState(True)

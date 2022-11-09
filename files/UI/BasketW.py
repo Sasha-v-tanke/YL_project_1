@@ -1,6 +1,6 @@
 from Windows import Window
 import sys, os.path, sqlite3
-from PyQt5.QtWidgets import QPushButton, QLineEdit, QSpinBox, QScrollArea, QFormLayout, QLabel, QVBoxLayout
+from PyQt5.QtWidgets import QPushButton, QLineEdit, QSpinBox, QScrollArea, QFormLayout, QLabel, QVBoxLayout, QMessageBox
 from PyQt5.QtCore import QRect
 from datetime import datetime
 from Enums import WindowName
@@ -11,7 +11,7 @@ class BasketW(Window):
     def setupUI(self):
         self.con = sqlite3.connect(MENU_DB)
         self.cur = self.con.cursor()
-        self.lst = []
+        self.lst = list()
         self.setWindowTitle("Корзина")
 
         self.layout = QVBoxLayout(self)
@@ -47,7 +47,7 @@ class BasketW(Window):
         for dish in self.dishes:
             if dish[0].value():
                 newList.append((dish[1], dish[0].value()))
-        ids = self.cur.execute("""SELECT OrderId FROM Orders""").fetchall()
+        ids = [e[0] for e in self.cur.execute("""SELECT OrderId FROM Orders""").fetchall()]
         if not newList:
             return
         id = 0
@@ -59,12 +59,20 @@ class BasketW(Window):
         for dish in newList:
             self.cur.execute("""INSERT INTO OrderedDishes(DishId, Count, OrderId) VALUES(?, ?, ?)""", (*dish, id))
         self.con.commit()
+        mes = QMessageBox()
+        mes.setIcon(QMessageBox.Information)
+        mes.setText("Номер:                 " + str(id))
+        mes.setStandardButtons(QMessageBox.Ok)
+        mes.setWindowTitle("Ваш заказ принят")
+        mes.exec_()
     
     def __del__(self):
         self.con.close()
 
     def addOffer(self, lst):
-        self.lst = lst
+        for elem in lst:
+            if elem not in self.lst:
+                self.lst.append(elem)
         self.load()
 
     def back(self):
