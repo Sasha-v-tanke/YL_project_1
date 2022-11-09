@@ -25,6 +25,8 @@ class Manager:
             self.window = CreatorW.CreatorW(self)
         elif name == WindowName.BASKET_WINDOW:
             self.window = BasketW.BasketW(self)
+        elif name == WindowName.BASKET_WINDOW:
+            self.window = OrdersW.OrdersW(self)
         self.window.setGeometry(*self.coor, *SIZE_W)
         self.window.show()
 
@@ -33,7 +35,7 @@ class Manager:
         self.window.setSettings(tabIndex)
 
     def start(self):
-        self.window = ShopW.ShopW(self)
+        self.window = OrdersW.OrdersW(self)
         self.window.setGeometry(*self.coor, self.window.width(), self.window.height())
         self.window.show()
 
