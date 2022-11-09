@@ -52,12 +52,6 @@
   <ItemGroup>
     <Content Include="DataBases\Accounts.db" />
     <Content Include="DataBases\Menu.db" />
-    <Content Include="UI\Admin.ui" />
-    <Content Include="UI\Basket.ui" />
-    <Content Include="UI\Creator.ui" />
-    <Content Include="UI\Orders.ui" />
-    <Content Include="UI\Shop.ui" />
-    <Content Include="UI\Main.ui" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\Python Tools\Microsoft.PythonTools.targets" />
   <!-- Uncomment the CoreCompile target to enable the Build command in

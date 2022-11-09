@@ -12,6 +12,3 @@ class DirectoryFileException(FileException):
 class NameFileException(FileException):
     """wrong name or directory of UI file"""
     pass
-
-
-
