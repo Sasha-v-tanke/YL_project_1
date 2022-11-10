@@ -1,8 +1,8 @@
 from Windows import Window
 
-import sys, os.path, sqlite3
+import sqlite3
 
-from PyQt5.QtWidgets import QPushButton, QLineEdit, QTabWidget, QFormLayout, QScrollArea, QTableWidget, QAbstractItemView, QTableWidgetItem, QGroupBox, QCheckBox, QLabel
+from PyQt5.QtWidgets import QPushButton, QTabWidget, QFormLayout, QScrollArea, QGroupBox, QCheckBox, QLabel
 from PyQt5.QtCore import QRect
 from Enums import WindowName
 from Constants import SIZE_W, MENU_DB
@@ -18,8 +18,9 @@ class ShopW(Window):
         self.cur = self.con.cursor()
         self.setWindowTitle("Меню")
 
+        size = (100, 25)
         self.Basket = QPushButton(self)
-        self.Basket.setGeometry(QRect(SIZE_W[0] - 100, SIZE_W[1] - 25, 100, 25))
+        self.Basket.setGeometry(QRect(SIZE_W[0] - size[0], SIZE_W[1] - size[1], *size))
         self.Basket.setText("Корзина")
         self.Basket.clicked.connect(self.basket)
 
@@ -34,11 +35,11 @@ class ShopW(Window):
         self.loadMenu()
 
     def loadMenu(self):
-        res = self.cur.execute("""SELECT Title, CategoryId FROM Categories""").fetchall()
-        for number, category in enumerate(res):
-            scroll = QScrollArea()
-            form = QFormLayout(scroll)
-            form.setHorizontalSpacing(200)
+        categories = self.cur.execute("""SELECT Title, CategoryId FROM Categories""").fetchall()
+        for number, category in enumerate(categories):
+            Scroll = QScrollArea()
+            Form = QFormLayout(Scroll)
+            Form.setHorizontalSpacing(200)
             dishes = self.cur.execute("""SELECT 
                             Dishes.Title, Dishes.Price, Dishes.DishId
                             FROM Dishes
@@ -46,26 +47,21 @@ class ShopW(Window):
                             ON Categories.CategoryId = Dishes.CategoryId
                             WHERE Categories.Title = ?""", (category[0],)).fetchall()
             for number, dish in enumerate(dishes):
-                ch = QCheckBox(dish[0])
-                self.boxes[ch] = dish[2]
-                ch.stateChanged.connect(self.change)
-                form.addRow(ch, QLabel(str(dish[1])))
-            self.Categories.addTab(scroll, category[0])
+                CheckBox = QCheckBox(dish[0])
+                self.boxes[CheckBox] = dish[2]
+                CheckBox.stateChanged.connect(self.change)
+                Form.addRow(CheckBox, QLabel(str(dish[1])))
+            self.Categories.addTab(Scroll, category[0])
 
     def change(self, state):
         if state:
-            self.add(self.boxes[self.sender()])
+            self.lst.append(self.boxes[self.sender()])
         else:
-            self.remove(self.boxes[self.sender()])
-
-    def remove(self, id):
-        self.lst.remove(id)
-
-    def add(self, id):
-        self.lst.append(id)
+            self.lst.remove(self.boxes[self.sender()])
 
     def basket(self):
-        self.manager.setOffer(self.lst)
+        if self.lst:
+            self.manager.setOffer(self.lst)
 
     def __del__(self):
         self.con.close()
@@ -73,7 +69,7 @@ class ShopW(Window):
     def addOffer(self, lst):
         for elem in lst:
             ind = list(self.boxes.values()).index(elem)
-            key = list(self.boxes.keys())[ind].setCheckState(True)
+            list(self.boxes.keys())[ind].setCheckState(True)
 
     def back(self):
         self.manager.changeMaket(WindowName.WELCOME_WINDOW)

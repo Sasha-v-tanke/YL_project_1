@@ -1,9 +1,7 @@
-import sys, os
-from PyQt5 import uic, QtCore, QtGui
-from PyQt5.QtWidgets import QApplication, QMainWindow
+from PyQt5.QtWidgets import QMainWindow
 from Exceptions import *
 from UI import WelcomeW, CreatorW, AdminW, ShopW, BasketW, OrdersW
-from Constants import *
+from Constants import SIZE_W
 from Enums import WindowName
 
 class Manager:
@@ -25,7 +23,7 @@ class Manager:
             self.window = CreatorW.CreatorW(self)
         elif name == WindowName.BASKET_WINDOW:
             self.window = BasketW.BasketW(self)
-        elif name == WindowName.BASKET_WINDOW:
+        elif name == WindowName.ORDERS_WINDOW:
             self.window = OrdersW.OrdersW(self)
         self.window.setGeometry(*self.coor, *SIZE_W)
         self.window.show()
@@ -35,7 +33,7 @@ class Manager:
         self.window.setSettings(tabIndex)
 
     def start(self):
-        self.window = OrdersW.OrdersW(self)
+        self.window = WelcomeW.WelcomeW(self)
         self.window.setGeometry(*self.coor, self.window.width(), self.window.height())
         self.window.show()
 
@@ -46,9 +44,3 @@ class Manager:
     def backToShop(self, lst):
         self.changeMaket(WindowName.SHOP_WINDOW)
         self.window.addOffer(lst)
-
-
-def start():
-    app = QApplication(sys.argv)
-    manager = Manager()
-    sys.exit(app.exec_())

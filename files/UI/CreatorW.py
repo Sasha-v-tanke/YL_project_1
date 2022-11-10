@@ -2,11 +2,12 @@ from Windows import Window
 
 import sqlite3
 
-from PyQt5.QtWidgets import QPushButton, QTabWidget, QLabel, QLineEdit, QTableWidget, QTableWidgetItem, QMessageBox, QAbstractItemView
-from PyQt5.QtCore import QRect
+from PyQt5.QtWidgets import QPushButton, QTabWidget, QLabel, QLineEdit
+from PyQt5.QtWidgets import QTableWidget, QTableWidgetItem, QMessageBox, QAbstractItemView, QInputDialog
+from PyQt5.QtCore import QRect, Qt
 
 from Enums import WindowName
-from Constants import SIZE_W, MENU_DB
+from Constants import SIZE_W, MENU_DB, ACCOUNTS_DB
 
 class CreatorW(Window):
     def back(self):
@@ -15,6 +16,8 @@ class CreatorW(Window):
     def setupUI(self):
         self.con = sqlite3.connect(MENU_DB)
         self.cur = self.con.cursor()
+        self.con2 = sqlite3.connect(ACCOUNTS_DB)
+        self.cur2 = self.con2.cursor()
         self.setWindowTitle("Редактор меню")
 
         self.BackToWelcome = QPushButton(self)
@@ -137,7 +140,7 @@ class CreatorW(Window):
         while id in ids:
             id += 1
         self.cur.execute("""INSERT INTO Categories(CategoryId, Title) VALUES(?, ?)""", 
-                         (str(id), 'новая категория ' + str(i),)).fetchall()
+                         (str(id), 'новая категория ' + str(i),))
         self.con.commit()
         self.update()
 
@@ -187,6 +190,29 @@ class CreatorW(Window):
         
     def __del__(self):
         self.con.close()
+
+    def keyPressEvent(self, event):
+        if int(event.modifiers()) == (Qt.AltModifier + Qt.ShiftModifier):
+            if event.key() == Qt.Key_N:
+                key = QInputDialog.getText(self, "Новый аккаунт", "код активации:")[0]
+                if key != "YL_2022":
+                    QMessageBox.question(self, '', 
+                            "Неверный код", QMessageBox.Yes)
+                    return
+                login = QInputDialog.getText(self, "Новый аккаунт", "логин:")[0]
+                accounts = self.cur2.execute("""SELECT Login, Password FROM Accounts""").fetchall()
+                if login in [e[0] for e in accounts]:
+                    QMessageBox.question(self, '', 
+                            "Такой логин уже существует", QMessageBox.Yes)
+                    return
+                password = QInputDialog.getText(self, "Новый аккаунт", "пароль:")[0]
+                if password in [e[1] for e in accounts]:
+                    QMessageBox.question(self, '', 
+                            "Такой пароль уже существует", QMessageBox.Yes)
+                    return
+                self.cur2.execute("""INSERT INTO Accounts VALUES(?, ?)""", (login, password))
+                self.con2.commit()
+
 
     def loadMenu(self):
         self.tabs = []

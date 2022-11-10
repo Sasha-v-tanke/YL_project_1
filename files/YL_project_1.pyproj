@@ -40,7 +40,7 @@
     <Compile Include="UI\WelcomeW.py" />
     <Compile Include="UI\OrdersW.py" />
     <Compile Include="UI\ShopW.py" />
-    <Compile Include="Welcome.py" />
+    <Compile Include="Manager.py" />
     <Compile Include="Windows.py">
       <SubType>Code</SubType>
     </Compile>
