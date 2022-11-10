@@ -28,9 +28,6 @@
     <Compile Include="Enums.py">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="Exceptions.py">
-      <SubType>Code</SubType>
-    </Compile>
     <Compile Include="Main.py">
       <SubType>Code</SubType>
     </Compile>
