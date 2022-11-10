@@ -9,8 +9,9 @@ class Manager:
         self.coor = (200, 200)
         self.start()
         self.tabIndex = -1
+        self.password = ''
 
-    def changeMaket(self, name: WindowName):
+    def changeMaket(self, name: WindowName, password=''):
         self.coor = (self.window.x() + 1, self.window.y() + 31)  # без понятия почему окно смещается при открытии
         self.window.close()
         if name == WindowName.WELCOME_WINDOW:
@@ -19,14 +20,22 @@ class Manager:
             self.window = ShopW.ShopW(self)
         elif name == WindowName.ADMIN_WINDOW:
             self.window = AdminW.AdminW(self)
+            self.window.setType(self.type)
         elif name == WindowName.CREATOR_WINDOW:
             self.window = CreatorW.CreatorW(self)
+            self.password = password
         elif name == WindowName.BASKET_WINDOW:
             self.window = BasketW.BasketW(self)
         elif name == WindowName.ORDERS_WINDOW:
             self.window = OrdersW.OrdersW(self)
         self.window.setGeometry(*self.coor, *SIZE_W)
         self.window.show()
+
+    def getPassword(self):
+        return self.password
+
+    def setType(self, type):
+        self.type = type
 
     def updateCreator(self, tabIndex):
         self.changeMaket(WindowName.CREATOR_WINDOW)

@@ -42,6 +42,9 @@ class AdminW(Window):
     def back(self):
         self.manager.changeMaket(WindowName.WELCOME_WINDOW)
         
+    def setType(self, type):
+        self.type = type
+
     def __del__(self):
         self.con.close()
 
@@ -52,8 +55,10 @@ class AdminW(Window):
                WHERE login = ?""", (login,)).fetchone()
         if len(passwords) == 0:
             self.Check.setText("Wrong login or password.\n Please try again")
-        elif password == passwords[0]:
-            self.manager.changeMaket(WindowName.CREATOR_WINDOW)
+        elif password == passwords[0] and self.type == "creator":
+            self.manager.changeMaket(WindowName.CREATOR_WINDOW, password)
+        elif password == passwords[0] and self.type == "manager":
+            self.manager.changeMaket(WindowName.ORDERS_WINDOW)
         else:
             self.Check.setText("Wrong login or password.\n Please try again")
 

@@ -212,7 +212,16 @@ class CreatorW(Window):
                     return
                 self.cur2.execute("""INSERT INTO Accounts VALUES(?, ?)""", (login, password))
                 self.con2.commit()
-
+            
+            if event.key() == Qt.Key_P:
+                newPassword = QInputDialog.getText(self, "Смена пароля", "Новый пароль: ")[0]
+                if password in [e[1] for e in accounts]:
+                    QMessageBox.question(self, '', 
+                            "Такой пароль уже существует", QMessageBox.Yes)
+                    return
+                self.cur2.execute("""UPDATE Accounts SET Password = ? WHERE Password = ?""",
+                    (newPassword, self.manager.getPassword()))
+                self.con2.commit()
 
     def loadMenu(self):
         self.tabs = []

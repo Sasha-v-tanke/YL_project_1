@@ -25,6 +25,8 @@ class WelcomeW(Window):
     def keyPressEvent(self, event):
         if int(event.modifiers()) == Qt.AltModifier:
             if event.key() == Qt.Key_A:
+                self.manager.setType("creator")
                 self.manager.changeMaket(WindowName.ADMIN_WINDOW)
             if event.key() == Qt.Key_M:
-                self.manager.changeMaket(WindowName.ORDERS_WINDOW)
+                self.manager.setType("manager")
+                self.manager.changeMaket(WindowName.ADMIN_WINDOW)
