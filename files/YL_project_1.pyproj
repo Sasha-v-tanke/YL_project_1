@@ -40,7 +40,7 @@
     <Compile Include="UI\WelcomeW.py" />
     <Compile Include="UI\OrdersW.py" />
     <Compile Include="UI\ShopW.py" />
-    <Compile Include="Welcome.py" />
+    <Compile Include="Manager.py" />
     <Compile Include="Windows.py">
       <SubType>Code</SubType>
     </Compile>
@@ -52,12 +52,7 @@
   <ItemGroup>
     <Content Include="DataBases\Accounts.db" />
     <Content Include="DataBases\Menu.db" />
-    <Content Include="UI\Admin.ui" />
-    <Content Include="UI\Basket.ui" />
-    <Content Include="UI\Creator.ui" />
-    <Content Include="UI\Orders.ui" />
-    <Content Include="UI\Shop.ui" />
-    <Content Include="UI\Main.ui" />
+    <Content Include="README.md" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\Python Tools\Microsoft.PythonTools.targets" />
   <!-- Uncomment the CoreCompile target to enable the Build command in
