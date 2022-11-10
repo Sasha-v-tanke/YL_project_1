@@ -36,7 +36,11 @@ class ShopW(Window):
 
     def loadMenu(self):
         categories = self.cur.execute("""SELECT Title, CategoryId FROM Categories""").fetchall()
-        for number, category in enumerate(categories):
+        try:
+            categories[1]
+        except:
+            return
+        for number, category in enumerate(categories[1:]):
             Scroll = QScrollArea()
             Form = QFormLayout(Scroll)
             Form.setHorizontalSpacing(200)

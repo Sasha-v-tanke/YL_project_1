@@ -51,6 +51,7 @@ class OrdersW(Window):
         orders = self.cur.execute("""SELECT OrderId, Time FROM Orders""").fetchall()
         self.Orders.setRowCount(len(orders))
         self.Orders.setColumnCount(2)
+        self.Orders.setHorizontalHeaderLabels(["id", "блюда"])
         for number, order in enumerate(orders):
             lst = ""
             dishes = self.cur.execute("""SELECT DishId, Count FROM OrderedDishes WHERE OrderId = ?""", (order[0],)).fetchall()
@@ -73,6 +74,7 @@ class OrdersW(Window):
             dishes[dish[1]] += dish[0]
         self.Dishes.setRowCount(len(dishes.keys()))
         self.Dishes.setColumnCount(2)
+        self.Dishes.setHorizontalHeaderLabels(["колво", "название"])
         for number, dish in enumerate(dishes.keys()):
             self.Dishes.setItem(number, 0, QTableWidgetItem(str(dishes[dish])))
             self.Dishes.setItem(number, 1, QTableWidgetItem(dish))
