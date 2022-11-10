@@ -167,20 +167,31 @@ class CreatorW(Window):
         except:
             pass
         else:
+            ids = [e[0] for e in self.cur.execute("""SELECT CategoryId from Categories""").fetchall()]
+            if id in ids:
+                return
             self.cur.execute("""UPDATE Categories SET CategoryId = ? WHERE Title = ?""",
                     (id, self.Categories.tabText(self.Categories.currentIndex()).split('_')[0]))
             self.con.commit()
             self.update()
         
     def confirmEdit(self):
+        if not self.changes.keys():
+            return
         que = "UPDATE Dishes\nSET "
         que += ", ".join([f"{self.changes.get(key)[1]} = {self.changes.get(key)[0]}\nWHERE Title = '{key}'"
                           for key in self.changes.keys()])
-        self.cur.execute(que)
-        self.con.commit()
-        self.update()
+        try:
+            self.cur.execute(que)
+        except:
+            pass
+        else:
+            self.con.commit()
+            self.update()
 
     def cancelEdit(self):
+        if not self.changes.keys():
+            return
         self.changes = {}
         self.update()
 
